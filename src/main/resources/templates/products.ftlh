@@ -24,12 +24,16 @@
 </#list>
 <hr>
 <h3>Создать новый товар</h3>
-<form action="/product/create" method="post">
+<form action="/product/create" method="post" enctype="multipart/form-data">
     Название объявления: <input type="text" name="title"><br><br>
     Описание объявления: <input type="text" name="description"><br><br>
     Цена: <input type="number" name="price"><br><br>
     Город: <input type="text" name="city"><br><br>
     Имя: <input type="text" name="author"><br><br>
+    Первое фото: <input type="file" name="file1"><br><br>
+    Второе фото: <input type="file" name="file2"><br><br>
+    Третье фото: <input type="file" name="file3"><br><br>
+
     <input type="submit" value="Добавить товар">
 </form>
 </body>

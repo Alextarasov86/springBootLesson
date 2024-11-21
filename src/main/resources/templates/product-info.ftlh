@@ -10,6 +10,9 @@
 <body>
 <h1>BYSELL</h1>
 <h3>Подробная информация о товаре</h3>
+<#list images as img>
+    <img src="/image/${img.id}" height="60px" alt="img"><br><br>
+</#list>
 <b>Название товара:</b> ${product.title}<br>
 <b>Описание товара:</b> ${product.description}<br>
 <b>Цена товара:</b> ${product.price}<br>

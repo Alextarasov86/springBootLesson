@@ -2,6 +2,7 @@ package com.example.bysell.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,28 +14,18 @@ import java.util.List;
 @Entity
 @Table(name = "products")
 @AllArgsConstructor
+@Data
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-    @Setter
-    @Getter
     private String title;
-    @Setter
-    @Getter
     @Column(columnDefinition = "text")
     private String description;
-    @Setter
-    @Getter
     private int price;
-    @Setter
-    @Getter
     private String city;
-    @Setter
-    @Getter
-    private String author;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product") // У одного продукта много картинок
+    private String author;    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product") // У одного продукта много картинок
     private List<Image> imageList = new ArrayList<>();
     private long previewImageId;
     private LocalDateTime createdAt;
@@ -92,11 +83,8 @@ public class Product {
         return "Product(title=" + this.getTitle() + ", description=" + this.getDescription() + ", price=" + this.getPrice() + ", city=" + this.getCity() + ", author=" + this.getAuthor() + ")";
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public void addImageToProduct(Image image) {
+        image.setProduct(this);
+        this.imageList.add(image);
     }
 }

@@ -14,10 +14,11 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String name;
     private String originalFilename;
     private String contentType;
-    private long size;
+    private Long size;
     private boolean isPreviewImage;
     @Lob
     private byte[] bytes;
